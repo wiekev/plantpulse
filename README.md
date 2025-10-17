@@ -190,4 +190,5 @@ Zorg er voor de de naam het zelfde is als de naam die je bovenin gebruikt bij de
 plantName.toLowerCase();
 plantName.replace(" ", "%20");
 ```
-moeten gebruiken. En ook in de String url 
+moeten gebruiken. En ook in de String url moet je het veranderen naar: ``` String url = "https://perenual.com/api/v2/species-list?key=" + String(apiKey) + "&q=" + plantName;```
+
