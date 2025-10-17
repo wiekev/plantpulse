@@ -291,7 +291,7 @@ Here is a link to my chat: https://chatgpt.com/share/68f1ff39-7514-8000-92a7-ebe
 
 
 Here are the links to my ChatGPT chats for translating the text: 
-https://chatgpt.com/share/68f24ce3-bd34-8000-9d14-0d948412d499
+https://chatgpt.com/share/68f24ce3-bd34-8000-9d14-0d948412d499 and
 https://chatgpt.com/share/68f24cce-ecf8-8000-aa3d-3b6d208fb570
 
 
