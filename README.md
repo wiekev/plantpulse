@@ -290,7 +290,6 @@ De vertaling naar Engels is:
 I tried a lot more with ChatGPT afterwards, but nothing worked, so I have to give up because there was no more time. 
 Here is a link to my chat: https://chatgpt.com/share/68f1ff39-7514-8000-92a7-ebe3213b80d8 
 
-De vertaling naar Engels is:
 
 Here are the links to my ChatGPT chats for translating the text: 
 https://chatgpt.com/share/68f24ce3-bd34-8000-9d14-0d948412d499
