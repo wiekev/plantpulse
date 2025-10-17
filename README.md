@@ -195,5 +195,5 @@ moeten gebruiken. En ook in de String url moet je het veranderen naar: ``` Strin
 Nu lukt het om de plant op te zoeken in de API alleen is het nog niet mogelijk om de waterbehoefte op te zoeken. Hier een voorbeeld: 
 <img width="480" height="301" alt="Scherm­afbeelding 2025-10-17 om 09 09 10" src="https://github.com/user-attachments/assets/02d10a39-bd39-452b-945a-00d2768cc91f" />
 <img width="480" height="301" alt="Scherm­afbeelding 2025-10-17 om 09 09 32" src="https://github.com/user-attachments/assets/ac3073ef-5654-47e1-a535-69b59a48069f" />
-
+Er staat dat de waterbehoefte onbekend is maar het staat wel in de database. 
 
