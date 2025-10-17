@@ -10,7 +10,8 @@ Maak een account aan door op Sing Up te kliken.
 Als je een account hebt gemaakt kom je op deze pagina waar je op de knop Generate New Key moet kliken. 
 <img width="1440" height="804" alt="Developer" src="https://github.com/user-attachments/assets/01dde758-081c-4eb2-b927-367629fb8dca" />
 Je moet dan invullen waarvoor je het gaat gebruiken, dan kan bijvoorbeeld zijn voor een school opdracht. Als je dat hebt ingevult zal je je API Key krijgen. Ondhoud waar je deze hent staan, want je hebt het later nodig.
-<img width="1440" height="804" alt="Scherm­afbeelding 2025-10-16 om 14 49 55" src="https://github.com/user-attachments/assets/60b579d3-546b-4baf-b338-cbecb03ed918" />
+<img width="1440" height="804" alt="Scherm­afbeelding 2025-10-16 om 14 49 55" src="https://github.com/user-attachments/assets/89562dfa-ccb5-4b81-b09a-46d38def9de5" />
+
 
 ## Stap 2 library's installeren en basis code
 Je moet de library HTTPClient by Adrian McEwen instaleren zoals op de foto. Ook moet je op de zelfde manier de library's ArduinoJson by Benoit Blanchon en de WiFiClientSecure en de ESP8266WiFi installeren.
@@ -73,7 +74,8 @@ void loop() {
 ```
 
 Als je dit in je serial monitor ziet staan is die goed geconnect.
-<img width="960" height="603" alt="Scherm­afbeelding 2025-10-16 om 15 19 34" src="https://github.com/user-attachments/assets/e8837d7b-1ca1-472f-8e3d-215b57deecf6" />
+<img width="960" height="603" alt="Scherm­afbeelding 2025-10-16 om 15 19 34" src="https://github.com/user-attachments/assets/499f0968-e92d-4637-83c9-0bc375274ec8" />
+
 
 ## Stap 3 informatie ophalen uit de API
 
