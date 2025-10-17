@@ -1,23 +1,34 @@
 # PlantPulse
 
-In deze manual laat ik zien hoe ik heb geprobeert de watering van een plant te achterhalen van de API van Perenual.
+In this manual, I show how I tried to retrieve the watering information of a plant from the Perenual API.
 
-## Stap 1 API Key aanmaken
-De eerste stap is het aanmaken van een account bij Perenual zodat je een eigen API Key krijgt.
-ga naar de website van Perenual https://perenual.com/docs/api en druk dan op de knop GET API KEY & ACCESS.
-Maak een account aan door op Sing Up te kliken.
+
+## things you need
+1. NodeMCU (ESP8266)
+2. Arduino IDE
+
+
+## Step 1 Create API Key
+The first step is to create an account with Perenual so that you can get your own API key.
+Go to the Perenual website at [https://perenual.com/docs/api](https://perenual.com/docs/api) and click the **GET API KEY & ACCESS** button.
+Create an account by clicking **Sign Up**.
 <img width="1440" height="804" alt="Scherm­afbeelding 2025-10-16 om 14 47 35" src="https://github.com/user-attachments/assets/2dc7e57b-7a1d-418c-b39f-a0fa858af432" />
-Als je een account hebt gemaakt kom je op deze pagina waar je op de knop Generate New Key moet kliken. 
+Once you’ve created an account, you’ll be taken to this page, where you need to click the **Generate New Key** button.
 <img width="1440" height="804" alt="Developer" src="https://github.com/user-attachments/assets/01dde758-081c-4eb2-b927-367629fb8dca" />
-Je moet dan invullen waarvoor je het gaat gebruiken, dan kan bijvoorbeeld zijn voor een school opdracht. Als je dat hebt ingevult zal je je API Key krijgen. Ondhoud waar je deze hent staan, want je hebt het later nodig.
+You’ll then need to fill in what you’re going to use it for ,for example, a school project. Once you’ve entered that information, you’ll receive your API key.
+Make sure to remember where you saved it, as you’ll need it later.
 <img width="1440" height="804" alt="Scherm­afbeelding 2025-10-16 om 14 49 55" src="https://github.com/user-attachments/assets/89562dfa-ccb5-4b81-b09a-46d38def9de5" />
 
 
-## Stap 2 library's installeren en basis code
-Je moet de library HTTPClient by Adrian McEwen instaleren zoals op de foto. Ook moet je op de zelfde manier de library's ArduinoJson by Benoit Blanchon en de WiFiClientSecure en de ESP8266WiFi installeren.
+## Step 2 Install libraries and basic code
+You need to install the **HTTPClient** library by *Adrian McEwen*, as shown in the picture.
+In the same way, you also need to install the following libraries: **ArduinoJson** by *Benoit Blanchon*, **WiFiClientSecure**, and **ESP8266WiFi**.
 <img width="960" height="603" alt="Scherm­afbeelding 2025-10-16 om 15 11 14" src="https://github.com/user-attachments/assets/d4fa2c74-4a73-49a1-86fb-0f50b6a40ad4" />
 
-Plak deze code in je sketch om te kijken of je kan verbinden met de API. Voer wel nog jouw eigen WiFi naam en wachtwoordin, het is het slim om het te laten verbinden met je hotspot want niet elke WiFi werkt. Ook moet je je eigen API Key invullen die heb je als het goed is net aangemaakt:
+Paste this code into your sketch to check if you can connect to the API.
+Make sure to enter your own Wi-Fi name and password, it’s often best to connect through your mobile hotspot, as not every Wi-Fi network will work.
+You’ll also need to enter your own API key, which you should have just created.
+
 
 ```
 #include <ESP8266WiFi.h>
@@ -73,15 +84,16 @@ void loop() {
 }
 ```
 
-Als je dit in je serial monitor ziet staan is die goed geconnect.
+If you see this message in your serial monitor, it means the connection was successful.
 <img width="960" height="603" alt="Scherm­afbeelding 2025-10-16 om 15 19 34" src="https://github.com/user-attachments/assets/499f0968-e92d-4637-83c9-0bc375274ec8" />
 
 
-## Stap 3 informatie ophalen uit de API
+## Step 3 Retrieve information from the API
 
-Nu gaan we er voor zorgen dat je in je serial monitor een planten naam kan typen en dat dan de waterbehoefte te zien is. Dit is mij niet helemaal gelukt, ik zal uitleggen wat ik heb gedaan en dan waar het fout gaat. 
+Now we’re going to make it so that you can type a plant name in the serial monitor and see its watering requirements.
+I wasn’t able to get this part fully working, but I’ll explain what I did and where it went wrong.
 
-Plak deze code in scetch:
+Paste this code into your sketch:
 ```
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
@@ -169,38 +181,39 @@ void zoekPlant(String naam) {
 }
 
 ```
-In je serial monitor kan je de naam van de plant invullen zoals op deze foto:
+In your serial monitor, you can enter the name of the plant, as shown in this picture:
 <img width="960" height="603" alt="Scherm­afbeelding 2025-10-16 om 15 57 17" src="https://github.com/user-attachments/assets/e177dbaa-42ee-4631-a4a4-cf9f687655a3" />
-Helaas kreeg ik hier een error:
+Unfortunately, I got an error at this point:
 <img width="960" height="603" alt="Scherm­afbeelding 2025-10-16 om 15 58 02" src="https://github.com/user-attachments/assets/4aeada68-efcf-4fdf-a3ab-610d1a26be2f" />
 
-Ik heb meerdere dingen geprobeerd om het probleem te kunnen oplossen maar helaas is het mij niet gelukt. Ik zal doornemen wat ik heb gedaan. 
+I tried several things to fix the problem, but unfortunately, I wasn’t able to solve it. I’ll go over what I did.
 
-Het eerste probleem wat ik heb aangepakt is dat Perenual is overgestapt naar de API v2 dus moet je ook die aanvragen. 
-Dus je moet de String url aanpassen van door er v2 in te zetten
+The first issue I addressed was that Perenual has switched to API v2, so you also need to request access to that version.
+Therefore, you need to modify the **String url** by adding **v2** to it.
 <img width="960" height="603" alt="Scherm­afbeelding 2025-10-17 om 09 00 02" src="https://github.com/user-attachments/assets/638202ea-32e8-4970-b092-b968dba51af9" />
 
-Ook kan je er voor zorgen dat het geen hoofdletters en spaties stuurt naar de API want daar is de API erg gevoelig voor. Voeg daarom dit toe:
+You can also make sure that no capital letters or spaces are sent to the API, as it’s very sensitive to those.
+To do this, add the following:
 ```
 naam.toLowerCase();
 naam.replace(" ", "%20");
 ```
-Zorg er voor de de naam het zelfde is als de naam die je bovenin gebruikt bij de ```String plantName = "";``` dus in dit geval zou je: 
+Make sure that the name is the same as the one you used at the top in the ```String plantName = "";``` so in this case, you would use: 
 ```
 plantName.toLowerCase();
 plantName.replace(" ", "%20");
 ```
-moeten gebruiken. En ook in de String url moet je het veranderen naar: ``` String url = "https://perenual.com/api/v2/species-list?key=" + String(apiKey) + "&q=" + plantName;```
+And in the String url, you also need to change it to: ``` String url = "https://perenual.com/api/v2/species-list?key=" + String(apiKey) + "&q=" + plantName;```
 
-Nu lukt het om de plant op te zoeken in de API alleen is het nog niet mogelijk om de waterbehoefte op te zoeken. Hier een voorbeeld: 
+Now it is possible to look up the plant in the API, but it is still not possible to look up the water requirements. Here is an example:
 <img width="480" height="301" alt="Scherm­afbeelding 2025-10-17 om 09 09 10" src="https://github.com/user-attachments/assets/02d10a39-bd39-452b-945a-00d2768cc91f" />
 <img width="480" height="301" alt="Scherm­afbeelding 2025-10-17 om 09 09 32" src="https://github.com/user-attachments/assets/ac3073ef-5654-47e1-a535-69b59a48069f" />
-Er staat dat de waterbehoefte onbekend is maar het staat wel in de database. 
+It says that the water requirements are unknown, but they are in the database.
+So I tried to retrieve it from the API in a different way.
 
-Dus heb ik het geprobeert om het via een andere manier uit de API te halen. 
-Helemaal onderaan gaan moet je dit stukje, 
+At the very bottom, you need to add this piece,
 <img width="960" height="803" alt="Scherm­afbeelding 2025-10-17 om 09 15 51" src="https://github.com/user-attachments/assets/bc9b5fbb-b2b3-40db-a69c-b8793e766f40" />
-veranderen met dit: 
+replace with this:
 ```
 // Check of er resultaten zijn
       if (doc["data"].size() > 0) {
@@ -224,7 +237,7 @@ veranderen met dit:
   }
 }
 ```
-daar onder moet je een nieuw void toevoegen:
+Below that, you need to add a new void:
 ```
 void haalPlantDetails(int id) {
   WiFiClientSecure client;
@@ -269,7 +282,18 @@ void haalPlantDetails(int id) {
 }
 ```
 
-Nu lukt de eerste ophaal opdracht wel maar de tweede niet, dus van naam naar ID nummer lukt maar van ID nummer naar waterbehoefte lukt niet. Dan krijg je de melding 'connection failed'.
+Now the first fetch operation works, but the second one does not. So converting from name to ID number works, but from ID number to water requirements does not. Then you get the message 'connection failed'.
 <img width="953" height="392" alt="Scherm­afbeelding 2025-10-17 om 15 20 46" src="https://github.com/user-attachments/assets/4f02adc2-2d74-4cd2-96bc-bcb1a14994c3" />
 
-Ik heb hier na nog heel uitgeprobeerd met chatgpt maar het werkt allemaal niet dus ben ik er maar mee gestopt. Hier een link naar mijn chat: https://chatgpt.com/share/68f1ff39-7514-8000-92a7-ebe3213b80d8 
+De vertaling naar Engels is:
+
+I tried a lot more with ChatGPT afterwards, but nothing worked, so I have to give up because there was no more time. 
+Here is a link to my chat: https://chatgpt.com/share/68f1ff39-7514-8000-92a7-ebe3213b80d8 
+
+De vertaling naar Engels is:
+
+Here are the links to my ChatGPT chats for translating the text: 
+https://chatgpt.com/share/68f24ce3-bd34-8000-9d14-0d948412d499
+https://chatgpt.com/share/68f24cce-ecf8-8000-aa3d-3b6d208fb570
+
+
