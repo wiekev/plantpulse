@@ -136,3 +136,9 @@ void loop() {
   // niks nodig in de loop
 }
 ```
+
+
+Bij mij kwam toen dit staan 
+<img width="960" height="603" alt="Scherm­afbeelding 2025-10-16 om 15 32 50" src="https://github.com/user-attachments/assets/8f2924c6-5029-4621-b355-000ea7c0f56f" />
+
+Dit heb ik op verschilende manieren proberen optelossen. 
