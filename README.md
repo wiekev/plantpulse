@@ -18,13 +18,13 @@ Je moet de library HTTPClient by Adrian McEwen instaleren zoals op de foto. Ook 
 
 voer boven in je Arduino sktech de volgende #include:
 
-``` #include <ESP8266WiFi.h>``` 
+``` #include <ESP8266WiFi.h>
 
-```#include <ESP8266HTTPClient.h>```
+#include <ESP8266HTTPClient.h>
 
-```#include <WiFiClientSecure.h>```
+#include <WiFiClientSecure.h>
 
-```#include <ArduinoJson.h>```
+#include <ArduinoJson.h>```
 
 
 
