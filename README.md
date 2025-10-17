@@ -79,77 +79,94 @@ Als je dit in je serial monitor ziet staan is die goed geconnect.
 
 ## Stap 3 informatie ophalen uit de API
 
-Dit is mij niet helemaal gelukt, ik zal uitleggen wat ik heb gedaan en dan waar het fout gaat. 
+Nu gaan we er voor zorgen dat je in je serial monitor een planten naam kan typen en dat dan de waterbehoefte te zien is. Dit is mij niet helemaal gelukt, ik zal uitleggen wat ik heb gedaan en dan waar het fout gaat. 
 
-Het stuk onder "HTTPClient http;" gaan moet je veranderen naar:
+Plak deze code in scetch:
 ```
-String url = "https://perenual.com/api/species-list?key=" + String(apiKey) + "&q=" + String(plantName);
+#include <ESP8266WiFi.h>
+#include <ESP8266HTTPClient.h>
+#include <WiFiClientSecure.h>
+#include <ArduinoJson.h>
 
+const char* ssid = "JE_WIFI_NAAM";
+const char* password = "JE_WIFI_WACHTWOORD";
+const char* apiKey = "YOUR_API_KEY_HERE";
+
+String plantName = "";  // wordt ingevuld via Serial
+
+void setup() {
+  Serial.begin(115200);
+  WiFi.begin(ssid, password);
+  Serial.print("Verbinden met WiFi...");
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println(" Verbonden!");
+
+  Serial.println();
+  Serial.println("Typ de naam van een plant en druk op Enter:");
+}
+
+void loop() {
+  // check of er iets via Serial is ingevoerd
+  if (Serial.available() > 0) {
+    plantName = Serial.readStringUntil('\n');
+    plantName.trim();  // spaties en \r verwijderen
+    if (plantName.length() > 0) {
+      zoekPlant(plantName);
+      Serial.println("\nTyp nog een plantnaam om opnieuw te zoeken:");
+    }
+  }
+}
+
+void zoekPlant(String naam) {
+  WiFiClientSecure client;
+  client.setInsecure(); // accepteer alle certificaten
+
+  HTTPClient http;
+  http.setTimeout(15000);
+
+  String url = "https://perenual.com/api/species-list?key=" + String(apiKey) + "&q=" + naam;
+  Serial.println();
   Serial.println("Verbinding maken met:");
   Serial.println(url);
 
   if (http.begin(client, url)) {
     int httpCode = http.GET();
-
     if (httpCode > 0) {
       Serial.printf("HTTP code: %d\n", httpCode);
       String payload = http.getString();
-      Serial.println("Ontvangen data:");
+      Serial.print("Ontvangen lengte: ");
+      Serial.println(payload.length());
 
-      // JSON parser
-      DynamicJsonDocument doc(8192); // genoeg buffer voor Perenual-data
+      DynamicJsonDocument doc(16384);
       DeserializationError error = deserializeJson(doc, payload);
-
       if (error) {
         Serial.print("JSON parse error: ");
         Serial.println(error.c_str());
         return;
       }
 
-      // Controleer of er resultaten zijn
       if (doc["data"].size() > 0) {
         String name = doc["data"][0]["common_name"] | "Onbekend";
         String watering = doc["data"][0]["watering"] | "Onbekend";
-
         Serial.println("------------------------------");
-        Serial.println("Plant gevonden!");
-        Serial.print("Naam: ");
-        Serial.println(name);
-        Serial.print("Waterbehoefte: ");
-        Serial.println(watering);
+        Serial.println("Plant gevonden:");
+        Serial.println("Naam: " + name);
+        Serial.println("Waterbehoefte: " + watering);
         Serial.println("------------------------------");
       } else {
         Serial.println("Geen planten gevonden met die naam.");
       }
-
     } else {
       Serial.printf("Fout bij verbinding: %s\n", http.errorToString(httpCode).c_str());
     }
-
     http.end();
   } else {
     Serial.println("Kon verbinding niet starten (HTTPS)");
   }
 }
 
-void loop() {
-  // niks nodig in de loop
-}
 ```
-Voeg helemaal bovenin onder de const char* deze regel:
-```
-const char* plantName = "monstera";
-```
-
-Bij mij kwam toen dit staan:
-<img width="960" height="603" alt="Scherm­afbeelding 2025-10-16 om 15 35 14" src="https://github.com/user-attachments/assets/77902d90-8636-4090-b4fd-7aafea6739dd" />
-
-
-Dit heb ik op verschilende manieren proberen optelossen. Ik heb als eerst de JSON-buffer vergroot zodat je meer kB kan ophalen. Verandere het naar 16384.
-<img width="960" height="603" alt="Scherm­afbeelding 2025-10-16 om 15 35 55" src="https://github.com/user-attachments/assets/9d7ed22d-5179-45b1-8c45-f9f726de2866" />
-
-Ik kreeg toen nog steeds de zelfde error dus heb ik toen een timeout toegevoegt. Voeg deze regel toe ```http.setTimeout(15000);``` voor de regel, http.begin(client, url);
-<img width="960" height="603" alt="Scherm­afbeelding 2025-10-16 om 15 41 24" src="https://github.com/user-attachments/assets/ae1a2d36-d17b-4298-8124-8a15745cb8a7" />
-
-
 
