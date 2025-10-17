@@ -169,4 +169,20 @@ void zoekPlant(String naam) {
 }
 
 ```
+In je serial monitor kan je de naam van de plant invullen zoals op deze foto:
+<img width="960" height="603" alt="Scherm­afbeelding 2025-10-16 om 15 57 17" src="https://github.com/user-attachments/assets/e177dbaa-42ee-4631-a4a4-cf9f687655a3" />
+Helaas kreeg ik hier een error:
+<img width="960" height="603" alt="Scherm­afbeelding 2025-10-16 om 15 58 02" src="https://github.com/user-attachments/assets/4aeada68-efcf-4fdf-a3ab-610d1a26be2f" />
 
+Ik heb meerdere dingen geprobeerd om het probleem te kunnen oplossen maar helaas is het mij niet gelukt. Ik zal doornemen wat ik heb gedaan. 
+
+Het eerste probleem wat ik heb aangepakt is dat Perenual is overgestapt naar de API v2 dus moet je ook die aanvragen. 
+Dus je moet de String url aanpassen van door er v2 in te zetten
+<img width="960" height="603" alt="Scherm­afbeelding 2025-10-17 om 09 00 02" src="https://github.com/user-attachments/assets/638202ea-32e8-4970-b092-b968dba51af9" />
+
+Ook kan je er voor zorgen dat het geen hoofdletters en spaties stuurt naar de API want daar is de API erg gevoelig voor. Voeg daarom dit toe:
+```
+naam.toLowerCase();
+naam.replace(" ", "%20");
+```
+Zorg er voor de de naam het zelfde is als de naam die je bovenin gebruikt bij de ```String plantName = "";```
