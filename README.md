@@ -42,7 +42,7 @@ void setup() {
 
   // Gebruik een beveiligde client
   WiFiClientSecure client;
-  client.setInsecure(); //  Niet veilig, maar handig voor test (accepteert alle certificaten)
+  client.setInsecure(); // Accepteert alle certificaten (handig voor test)
 
   HTTPClient http;
   String url = "https://perenual.com/api/species-list?key=" + String(apiKey);
@@ -79,3 +79,60 @@ Als je dit in je serial monitor ziet staan is die goed geconnect.
 
 ## Stap 3 informatie ophalen uit de API
 
+Dit is mij niet helemaal gelukt, ik zal uitleggen wat ik heb gedaan en dan waar het fout gaat. 
+
+Het stuk onder "HTTPClient http;" gaan moet je veranderen naar:
+```
+String url = "https://perenual.com/api/species-list?key=" + String(apiKey) + "&q=" + String(plantName);
+
+  Serial.println("Verbinding maken met:");
+  Serial.println(url);
+
+  if (http.begin(client, url)) {
+    int httpCode = http.GET();
+
+    if (httpCode > 0) {
+      Serial.printf("HTTP code: %d\n", httpCode);
+      String payload = http.getString();
+      Serial.println("Ontvangen data:");
+
+      // JSON parser
+      DynamicJsonDocument doc(8192); // genoeg buffer voor Perenual-data
+      DeserializationError error = deserializeJson(doc, payload);
+
+      if (error) {
+        Serial.print("JSON parse error: ");
+        Serial.println(error.c_str());
+        return;
+      }
+
+      // Controleer of er resultaten zijn
+      if (doc["data"].size() > 0) {
+        String name = doc["data"][0]["common_name"] | "Onbekend";
+        String watering = doc["data"][0]["watering"] | "Onbekend";
+
+        Serial.println("------------------------------");
+        Serial.println("Plant gevonden!");
+        Serial.print("Naam: ");
+        Serial.println(name);
+        Serial.print("Waterbehoefte: ");
+        Serial.println(watering);
+        Serial.println("------------------------------");
+      } else {
+        Serial.println("Geen planten gevonden met die naam.");
+      }
+
+    } else {
+      Serial.printf("Fout bij verbinding: %s\n", http.errorToString(httpCode).c_str());
+    }
+
+    http.end();
+  } else {
+    Serial.println("Kon verbinding niet starten (HTTPS)");
+  }
+}
+
+void loop() {
+  // niks nodig in de loop
+}
+```
