@@ -197,3 +197,74 @@ Nu lukt het om de plant op te zoeken in de API alleen is het nog niet mogelijk o
 <img width="480" height="301" alt="Scherm­afbeelding 2025-10-17 om 09 09 32" src="https://github.com/user-attachments/assets/ac3073ef-5654-47e1-a535-69b59a48069f" />
 Er staat dat de waterbehoefte onbekend is maar het staat wel in de database. 
 
+Dus heb ik het geprobeert om het via een andere manier uit de API te halen. 
+Helemaal onderaan gaan moet je dit stukje, 
+<img width="960" height="803" alt="Scherm­afbeelding 2025-10-17 om 09 15 51" src="https://github.com/user-attachments/assets/bc9b5fbb-b2b3-40db-a69c-b8793e766f40" />
+veranderen met dit: 
+```
+// Check of er resultaten zijn
+      if (doc["data"].size() > 0) {
+        int id = doc["data"][0]["id"] | -1;
+        String commonName = doc["data"][0]["common_name"] | "Onbekend";
+        Serial.printf("Eerste resultaat: %s (ID: %d)\n", commonName.c_str(), id);
+
+        if (id != -1) {
+          haalPlantDetails(id);
+        }
+      } else {
+        Serial.println("Geen planten gevonden met die naam.");
+      }
+
+    } else {
+      Serial.printf("Fout bij verbinding: %s\n", http.errorToString(httpCode).c_str());
+    }
+    http.end();
+  } else {
+    Serial.println("Kon verbinding niet starten (HTTPS).");
+  }
+}
+```
+daar onder moet je een nieuw void toevoegen:
+```
+void haalPlantDetails(int id) {
+  WiFiClientSecure client;
+  client.setInsecure();
+
+  HTTPClient http;
+  String url = "https://perenual.com/api/v2/species/details/" + String(id) + "?key=" + String(apiKey);
+  Serial.println("\nOphalen van details:");
+  Serial.println(url);
+
+  if (http.begin(client, url)) {
+    int httpCode = http.GET();
+
+    if (httpCode > 0) {
+      Serial.printf("HTTP code: %d\n", httpCode);
+      String payload = http.getString();
+
+      DynamicJsonDocument doc(32768);
+      DeserializationError error = deserializeJson(doc, payload);
+
+      if (error) {
+        Serial.print("JSON parse error (details): ");
+        Serial.println(error.c_str());
+        http.end();
+        return;
+      }
+
+      String name = doc["common_name"] | "Onbekend";
+      String watering = doc["watering"] | "Onbekend";
+
+      Serial.println("------------------------------");
+      Serial.println("Plant gevonden (details):");
+      Serial.println("Naam: " + name);
+      Serial.println("Waterbehoefte: " + watering);
+      Serial.println("------------------------------");
+
+    } else {
+      Serial.printf("Fout bij ophalen details: %s\n", http.errorToString(httpCode).c_str());
+    }
+    http.end();
+  }
+}
+```
