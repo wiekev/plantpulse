@@ -193,6 +193,7 @@ plantName.replace(" ", "%20");
 moeten gebruiken. En ook in de String url moet je het veranderen naar: ``` String url = "https://perenual.com/api/v2/species-list?key=" + String(apiKey) + "&q=" + plantName;```
 
 Nu lukt het om de plant op te zoeken in de API alleen is het nog niet mogelijk om de waterbehoefte op te zoeken. Hier een voorbeeld: 
-<img width="320" height="201" alt="Scherm­afbeelding 2025-10-17 om 09 09 10" src="https://github.com/user-attachments/assets/c96b64e5-74cb-4890-a13a-69375bc82349" />
-<img width="320" height="201" alt="Scherm­afbeelding 2025-10-17 om 09 09 32" src="https://github.com/user-attachments/assets/39abc21e-a0f1-4f81-bfe8-5c6f43edc0c5" />
+<img width="480" height="301" alt="Scherm­afbeelding 2025-10-17 om 09 09 10" src="https://github.com/user-attachments/assets/02d10a39-bd39-452b-945a-00d2768cc91f" />
+<img width="480" height="301" alt="Scherm­afbeelding 2025-10-17 om 09 09 32" src="https://github.com/user-attachments/assets/ac3073ef-5654-47e1-a535-69b59a48069f" />
+
 
