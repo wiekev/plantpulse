@@ -268,3 +268,6 @@ void haalPlantDetails(int id) {
   }
 }
 ```
+Toen ik dat ging testen kreeg ik deze fout:
+<img width="960" height="803" alt="Scherm­afbeelding 2025-10-17 om 09 19 23" src="https://github.com/user-attachments/assets/dfb0bef6-49f0-4711-a8a5-350e59417c48" />
+
