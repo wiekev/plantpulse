@@ -12,7 +12,7 @@ Als je een account hebt gemaakt kom je op deze pagina waar je op de knop Generat
 Je moet dan invullen waarvoor je het gaat gebruiken, dan kan bijvoorbeeld zijn voor een school opdracht. Als je dat hebt ingevult zal je je API Key krijgen. Ondhoud waar je deze hent staan, want je hebt het later nodig.
 <img width="1440" height="804" alt="Scherm­afbeelding 2025-10-16 om 14 49 55" src="https://github.com/user-attachments/assets/60b579d3-546b-4baf-b338-cbecb03ed918" />
 
-## Stap 2 library's installeren 
+## Stap 2 library's installeren en basis code
 Je moet de library HTTPClient by Adrian McEwen instaleren zoals op de foto. Ook moet je op de zelfde manier de library's ArduinoJson by Benoit Blanchon en de WiFiClientSecure en de ESP8266WiFi installeren.
 <img width="960" height="603" alt="Scherm­afbeelding 2025-10-16 om 15 11 14" src="https://github.com/user-attachments/assets/d4fa2c74-4a73-49a1-86fb-0f50b6a40ad4" />
 
@@ -72,5 +72,8 @@ void loop() {
 }
 ```
 
+Als je dit in je serial monitor ziet staan is die goed geconnect.
+<img width="960" height="603" alt="Scherm­afbeelding 2025-10-16 om 15 19 34" src="https://github.com/user-attachments/assets/e8837d7b-1ca1-472f-8e3d-215b57deecf6" />
 
+## Stap 3 informatie ophalen uit de API
 
