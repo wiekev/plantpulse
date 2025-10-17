@@ -268,8 +268,7 @@ void haalPlantDetails(int id) {
   }
 }
 ```
-Toen ik dat ging testen kreeg ik deze fout:
-<img width="960" height="803" alt="Scherm­afbeelding 2025-10-17 om 09 19 23" src="https://github.com/user-attachments/assets/dfb0bef6-49f0-4711-a8a5-350e59417c48" />
 
-
+Nu lukt de eerste ophaal opdracht wel maar de tweede niet, dus van naam naar ID nummer lukt maar van ID nummer naar waterbehoefte lukt niet. Dan krijg je de melding 'connection failed'.
 <img width="953" height="392" alt="Scherm­afbeelding 2025-10-17 om 15 20 46" src="https://github.com/user-attachments/assets/4f02adc2-2d74-4cd2-96bc-bcb1a14994c3" />
+
