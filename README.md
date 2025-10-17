@@ -148,6 +148,8 @@ Bij mij kwam toen dit staan:
 Dit heb ik op verschilende manieren proberen optelossen. Ik heb als eerst de JSON-buffer vergroot zodat je meer kB kan ophalen. Verandere het naar 16384.
 <img width="960" height="603" alt="Scherm­afbeelding 2025-10-16 om 15 35 55" src="https://github.com/user-attachments/assets/9d7ed22d-5179-45b1-8c45-f9f726de2866" />
 
+Ik graag toch nog steeds de zelfde error dus heb ik toen een timeout toegevoegt. Voeg deze regel toe ```http.setTimeout(15000);``` voor de regel, http.begin(client, url);
+<img width="960" height="603" alt="Scherm­afbeelding 2025-10-16 om 15 41 24" src="https://github.com/user-attachments/assets/ae1a2d36-d17b-4298-8124-8a15745cb8a7" />
 
 
 
