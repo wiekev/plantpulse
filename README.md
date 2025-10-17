@@ -185,4 +185,9 @@ Ook kan je er voor zorgen dat het geen hoofdletters en spaties stuurt naar de AP
 naam.toLowerCase();
 naam.replace(" ", "%20");
 ```
-Zorg er voor de de naam het zelfde is als de naam die je bovenin gebruikt bij de ```String plantName = "";```
+Zorg er voor de de naam het zelfde is als de naam die je bovenin gebruikt bij de ```String plantName = "";``` dus in dit geval zou je: 
+```
+plantName.toLowerCase();
+plantName.replace(" ", "%20");
+```
+moeten gebruiken
