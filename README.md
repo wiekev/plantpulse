@@ -15,11 +15,15 @@ Je moet dan invullen waarvoor je het gaat gebruiken, dan kan bijvoorbeeld zijn v
 ## Stap 2 library's installeren 
 Je moet de library HTTPClient by Adrian McEwen instaleren zoals op de foto. Ook moet je op de zelfde manier de library ArduinoJson by Benoit Blanchon en de  installeren.
 <img width="960" height="603" alt="Scherm­afbeelding 2025-10-16 om 15 11 14" src="https://github.com/user-attachments/assets/d4fa2c74-4a73-49a1-86fb-0f50b6a40ad4" />
+
 voer boven in je Arduino sktech de volgende #include:
 
 ``` #include <ESP8266WiFi.h>``` 
+
 ```#include <ESP8266HTTPClient.h>```
+
 ```#include <WiFiClientSecure.h>```
+
 ```#include <ArduinoJson.h>```
 
 
