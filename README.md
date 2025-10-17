@@ -285,9 +285,8 @@ void haalPlantDetails(int id) {
 Now the first fetch operation works, but the second one does not. So converting from name to ID number works, but from ID number to water requirements does not. Then you get the message 'connection failed'.
 <img width="953" height="392" alt="Scherm­afbeelding 2025-10-17 om 15 20 46" src="https://github.com/user-attachments/assets/4f02adc2-2d74-4cd2-96bc-bcb1a14994c3" />
 
-De vertaling naar Engels is:
 
-I tried a lot more with ChatGPT afterwards, but nothing worked, so I have to give up because there was no more time. 
+I tried a lot more with ChatGPT afterward, which is too much to type out, but nothing worked. So I have to give up because there was no more time. 
 Here is a link to my chat: https://chatgpt.com/share/68f1ff39-7514-8000-92a7-ebe3213b80d8 
 
 
