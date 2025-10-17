@@ -272,3 +272,4 @@ void haalPlantDetails(int id) {
 Nu lukt de eerste ophaal opdracht wel maar de tweede niet, dus van naam naar ID nummer lukt maar van ID nummer naar waterbehoefte lukt niet. Dan krijg je de melding 'connection failed'.
 <img width="953" height="392" alt="Scherm­afbeelding 2025-10-17 om 15 20 46" src="https://github.com/user-attachments/assets/4f02adc2-2d74-4cd2-96bc-bcb1a14994c3" />
 
+Ik heb hier na nog heel uitgeprobeerd met chatgpt maar het werkt allemaal niet dus ben ik er maar mee gestopt. Hier een link naar mijn chat: https://chatgpt.com/share/68f1ff39-7514-8000-92a7-ebe3213b80d8 
