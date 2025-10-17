@@ -142,10 +142,12 @@ const char* plantName = "monstera";
 ```
 
 Bij mij kwam toen dit staan:
-<img width="960" height="603" alt="Scherm­afbeelding 2025-10-16 om 15 32 50" src="https://github.com/user-attachments/assets/8f2924c6-5029-4621-b355-000ea7c0f56f" />
+<img width="960" height="603" alt="Scherm­afbeelding 2025-10-16 om 15 35 14" src="https://github.com/user-attachments/assets/77902d90-8636-4090-b4fd-7aafea6739dd" />
+
 
 Dit heb ik op verschilende manieren proberen optelossen. Ik heb als eerst de JSON-buffer vergroot zodat je meer kB kan ophalen. Verandere het naar 16384.
-<img width="960" height="603" alt="Scherm­afbeelding 2025-10-16 om 15 35 55" src="https://github.com/user-attachments/assets/256d6e32-18f1-4737-8351-3a9703e538ab" />
+<img width="960" height="603" alt="Scherm­afbeelding 2025-10-16 om 15 35 55" src="https://github.com/user-attachments/assets/9d7ed22d-5179-45b1-8c45-f9f726de2866" />
+
 
 
 
