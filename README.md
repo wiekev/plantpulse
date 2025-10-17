@@ -190,4 +190,4 @@ Zorg er voor de de naam het zelfde is als de naam die je bovenin gebruikt bij de
 plantName.toLowerCase();
 plantName.replace(" ", "%20");
 ```
-moeten gebruiken
+moeten gebruiken. En ook in de String url 
